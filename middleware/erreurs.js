@@ -14,7 +14,7 @@ export function routeInconnue(req,res){
 }
 
 
-export function gestionnaireErreur(err, req, res, next){
+export function gestionnaireErreurs(err, req, res, next){
     if (res.headerSent) return next(err);
 
     const [statutPg, messagePg] = CODE_PG[err.code] ?? [];

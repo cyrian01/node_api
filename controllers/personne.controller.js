@@ -1,5 +1,5 @@
 import * as Personne from '../models/personne.model.js';
-import ah from '../middleware/async_handler.js';
+import {ah} from '../middleware/async_handler.js';
 
 
 const introuvable = () => {
@@ -15,7 +15,7 @@ export const lister = ah(async (req, res) => {
 
     res.json({
         data: lignes,
-        paginaation: {page, limite, total, pages: Math.ceil(total/limite)},
+        pagination: {page, limite, total, pages: Math.ceil(total/limite)},
     });
 });
 
@@ -29,7 +29,7 @@ export const lire = ah(async (req,res) => {
 // POST /api/personnes
 export const creer = ah(async (req, res) => {
     const personne = await Personne.creer(req.body);
-    res.satus(201).location(`/api/personnes/${personne.id}`).json(personne);
+    res.status(201).location(`/api/personnes/${personne.id}`).json(personne);
 });
 
 
